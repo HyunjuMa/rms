@@ -19,7 +19,7 @@ module.exports = function(app, User) {
     })
   });
 
-  app.post('/', function(req,res){
+  app.post('/', function(req,res,next){
     var user = new User();
     user.name = req.body.name;
     user.email = req.body.email;
