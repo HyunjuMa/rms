@@ -12,10 +12,14 @@ module.exports = function(router, User) {
 
   /* GET home page. */
   app.get('/', function(req, res, next) {
-    res.render('auth/register', { title: 'Register Page' });
+    //res.render('auth/register', { title: 'Register Page' });
+    User.find(function(err, users){
+      if(err) return res.status(500).send({error: 'db failure'});
+      res.json(users);
+    })
   });
 
-  app.post('auth/reqister/', function(req,res){
+  app.post('/', function(req,res){
     var user = new User();
     user.name = req.body.name;
     user.email = req.body.email;
