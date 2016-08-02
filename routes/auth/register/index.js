@@ -8,7 +8,7 @@ var register = require('../../../controllers/auth/register');
 //Common 관리
 var common = require('../../../controllers/common');
 
-module.exports = function(router, User) {
+module.exports = function(app, User) {
 
   /* GET home page. */
   app.get('/', function(req, res, next) {
