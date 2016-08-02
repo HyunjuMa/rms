@@ -37,6 +37,3 @@ module.exports = function(app, User) {
   });//create user
 
 }
-
-
-module.exports = app;
