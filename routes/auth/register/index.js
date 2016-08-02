@@ -1,6 +1,6 @@
 //회원 가입과 관련된 라우팅
 var express = require('express');
-var router = express();
+var app = express.Router();
 
 //Controller 관리
 var register = require('../../../controllers/auth/register');
@@ -8,10 +8,10 @@ var register = require('../../../controllers/auth/register');
 //Common 관리
 var common = require('../../../controllers/common');
 
-module.exports = function(router, User) {
+module.exports = function(app, User) {
 
   /* GET home page. */
-  router.get('/', function(req, res, next) {
+  app.get('/', function(req, res, next) {
     //res.render('auth/register', { title: 'Register Page' });
     User.find(function(err, users){
       if(err) return res.status(500).send({error: 'db failure'});
@@ -19,7 +19,7 @@ module.exports = function(router, User) {
     })
   });
 
-  router.post('/', function(req,res){
+  app.post('/', function(req,res){
     var user = new User();
     user.name = req.body.name;
     user.email = req.body.email;
@@ -37,3 +37,6 @@ module.exports = function(router, User) {
   });//create user
 
 }
+
+
+module.exports = app;
